@@ -1,4 +1,4 @@
-# IWD Practicals: Experiments 2 and 3
+# IWD Practicals: Experiments 1, 2 and 3
 
 Course: 01AL0501 Intelligent Web Designing  
 Department: BS - AI ML & DS, Faculty of Technology, Marwadi University  
@@ -10,8 +10,12 @@ Live demo: https://mahadishaaqlubega.github.io/iwd-practicals/
 
 | No. | Title | Folder |
 |-----|-------|--------|
+| 1 | AI Project Portfolio hosted with GitHub Pages | [`experiment-1/`](experiment-1/) |
 | 2 | Responsive UI that updates text from user input (Lab Pass Studio) | [`experiment-2/`](experiment-2/) |
 | 3 | Line and bar chart dashboard with Chart.js (The Sales Ledger) | [`experiment-3/`](experiment-3/) |
+
+### Experiment 1: AI Project Portfolio
+A responsive portfolio page with personal information, AI projects, client work, skills and contact details. Projects and clients are stored as JavaScript arrays and rendered into the page, with a filter for AI and systems projects, a mobile menu, a section highlight in the navigation and a light/dark theme. The page is kept in Git and hosted with GitHub Pages.
 
 ### Experiment 2: Lab Pass Studio
 A form on the left and a lab pass on the right. As the user types:
