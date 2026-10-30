@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Ledger | IWD Experiment 3</title>
+  <meta name="description" content="Experiment 3: interactive line and bar chart dashboard built with Chart.js.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="style.css">
+  <!-- Chart.js from the jsDelivr CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-row">
+      <a class="wordmark" href="../index.html"><b>IWD Lab</b><span>Experiment No. 03</span></a>
+      <div class="mast-meta">
+        <span class="live" id="liveBadge">Static data</span>
+        <button class="text-btn" id="themeBtn" type="button">Dark mode</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <section class="hero">
+      <div>
+        <p class="kicker">Chart.js dashboard</p>
+        <h1 class="display">The Sales <em>Ledger</em></h1>
+      </div>
+      <div class="hero-side">
+        <p class="deck">Six months of sales and orders. The line shows how the numbers moved, the bars compare each month, and the tables hold the figures behind both.</p>
+        <div class="period">
+          <span class="opt-label">Period</span>
+          <div class="tabs" id="rangeControl">
+            <button type="button" data-range="q1">Jan &ndash; Mar</button>
+            <button type="button" data-range="q2">Apr &ndash; Jun</button>
+            <button type="button" data-range="all" class="active">All months</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- headline figures, filled by script.js -->
+    <section class="kpis">
+      <div class="kpi">
+        <span class="kpi-label">Total sales</span>
+        <strong id="kpiSales">0</strong>
+        <span class="kpi-sub" id="kpiSalesSub">&nbsp;</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Total orders</span>
+        <strong id="kpiOrders">0</strong>
+        <span class="kpi-sub" id="kpiOrdersSub">&nbsp;</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Sales per order</span>
+        <strong id="kpiRatio">0</strong>
+        <span class="kpi-sub">across the period</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Sales growth</span>
+        <strong id="kpiGrowth">0%</strong>
+        <span class="kpi-sub" id="kpiGrowthSub">&nbsp;</span>
+      </div>
+    </section>
+
+    <section class="charts">
+      <article class="chart-block">
+        <div class="block-head">
+          <div>
+            <p class="sec-num">01 &middot; Line chart</p>
+            <h2>How sales and orders moved</h2>
+            <p class="sub">Sales on the left scale, orders on the right</p>
+          </div>
+          <div class="tabs" id="lineMode">
+            <button type="button" data-tension="0.4" class="active">Curved</button>
+            <button type="button" data-tension="0">Straight</button>
+          </div>
+        </div>
+        <div class="canvas-wrap"><canvas id="lineChart" role="img" aria-label="Line chart of monthly sales and orders"></canvas></div>
+      </article>
+
+      <article class="chart-block">
+        <div class="block-head">
+          <div>
+            <p class="sec-num">02 &middot; Bar chart</p>
+            <h2>Month against month</h2>
+            <p class="sub">Both series side by side for each month</p>
+          </div>
+          <div class="tabs" id="barMode">
+            <button type="button" data-mode="grouped" class="active">Vertical</button>
+            <button type="button" data-mode="horizontal">Horizontal</button>
+          </div>
+        </div>
+        <div class="canvas-wrap"><canvas id="barChart" role="img" aria-label="Bar chart comparing sales and orders by month"></canvas></div>
+      </article>
+    </section>
+
+    <section class="tables">
+      <article>
+        <div class="block-head">
+          <div>
+            <p class="sec-num">03 &middot; Statistics</p>
+            <h2>The numbers behind the charts</h2>
+            <p class="sub" id="statsCaption">&nbsp;</p>
+          </div>
+        </div>
+        <table class="ledger">
+          <thead><tr><th>Measure</th><th>Sales</th><th>Orders</th></tr></thead>
+          <tbody id="statsBody"></tbody>
+        </table>
+      </article>
+
+      <article>
+        <div class="block-head">
+          <div>
+            <p class="sec-num">04 &middot; Data</p>
+            <h2>Monthly entries</h2>
+            <p class="sub">Change in sales against the month before</p>
+          </div>
+        </div>
+        <table class="ledger">
+          <thead><tr><th>Month</th><th>Sales</th><th>Orders</th><th>Change</th></tr></thead>
+          <tbody id="dataBody"></tbody>
+        </table>
+
+        <form class="add-form" id="addForm" novalidate>
+          <span class="opt-label">Add the next month</span>
+          <div class="add-row">
+            <label><span>Sales</span><input type="number" id="newSales" min="1" max="9999" placeholder="0"></label>
+            <label><span>Orders</span><input type="number" id="newOrders" min="1" max="9999" placeholder="0"></label>
+            <button type="submit" class="btn">Add row</button>
+          </div>
+          <p class="form-msg" id="formMsg">&nbsp;</p>
+          <div class="add-row links">
+            <button type="button" class="text-btn" id="liveBtn">Start live feed</button>
+            <button type="button" class="text-btn" id="resetBtn">Reset data</button>
+          </div>
+        </form>
+      </article>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <span>Lubega Mahad Ishaaq &middot; 92400198030</span>
+    <span>01AL0501 Intelligent Web Designing</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
