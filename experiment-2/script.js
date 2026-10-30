@@ -137,9 +137,9 @@ function render() {
   // the pass
   setText($("pvName"), shown, "Your name");
   setText($("pvHeadline"), v.headline, "Your headline");
-  setText($("pvEnroll"), v.enrollment, "—");
-  setText($("pvDept"), v.department, "—");
-  setText($("pvSem"), v.semester.replace("Semester ", "Sem "), "—");
+  setText($("pvEnroll"), v.enrollment, "Not set");
+  setText($("pvDept"), v.department, "Not set");
+  setText($("pvSem"), v.semester.replace("Semester ", "Sem "), "Not set");
   setText($("pvAbout"), v.about, "Whatever you write in the About box appears here.");
   $("pvInitials").textContent = initials(v.name);
   $("pvCode").textContent = (v.enrollment || "").padEnd(11, "0");
