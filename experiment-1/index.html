@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lubega Mahad Ishaaq | AI Project Portfolio</title>
+  <meta name="description" content="Portfolio of Lubega Mahad Ishaaq, BS AI ML & DS student: AI projects, client work, skills and contact.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-row">
+      <a class="wordmark" href="#top"><b>Lubega Mahad Ishaaq</b><span>Portfolio</span></a>
+      <nav class="nav" id="nav" aria-label="Sections">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#work">Client work</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="mast-meta">
+        <button class="text-btn" id="themeBtn" type="button">Dark mode</button>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page" id="top">
+
+    <!-- hero -->
+    <section class="hero">
+      <p class="kicker">BS AI, ML &amp; Data Science &middot; Marwadi University</p>
+      <h1 class="display">I build web systems and study how <em>AI agents</em> reason.</h1>
+      <div class="hero-foot">
+        <p class="deck">Student from Uganda, studying in India, and lead of a small team that designs and ships websites for clients in Uganda and abroad.</p>
+        <div class="hero-links">
+          <a class="btn" href="#projects">See projects</a>
+          <a class="btn ghost" href="https://github.com/mahadishaaqlubega" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <dl class="facts">
+        <div><dt>Projects</dt><dd id="countProjects">0</dd></div>
+        <div><dt>Client sites</dt><dd id="countClients">0</dd></div>
+        <div><dt>Research papers</dt><dd>1</dd></div>
+        <div><dt>Based in</dt><dd class="small">India</dd></div>
+      </dl>
+    </section>
+
+    <!-- about -->
+    <section class="section" id="about">
+      <div class="sec-label"><b>01</b> About</div>
+      <div class="about-grid">
+        <p class="lede">I am in the BS AI, ML &amp; Data Science programme at Marwadi University. My interests sit where software engineering meets machine intelligence: how a system is put together, and how an agent decides what to do inside it.</p>
+        <div class="about-text">
+          <p>Outside class I run Grittrix, a small team that builds websites and business tools. We have shipped booking sites, an inventory and point-of-sale system, and sites for a hospital, a church and two non-profits.</p>
+          <p>I also spent a semester on exchange in Portugal, which is where a lot of my interest in research started.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- projects -->
+    <section class="section" id="projects">
+      <div class="sec-label"><b>02</b> Selected projects</div>
+      <div class="filter-row">
+        <div class="tabs" id="filter">
+          <button type="button" data-filter="all" class="active">All</button>
+          <button type="button" data-filter="ai">AI &amp; data</button>
+          <button type="button" data-filter="systems">Systems</button>
+        </div>
+        <span class="filter-count" id="filterCount"></span>
+      </div>
+      <ol class="projects" id="projectList"><!-- filled by script.js --></ol>
+    </section>
+
+    <!-- client work -->
+    <section class="section" id="work">
+      <div class="sec-label"><b>03</b> Client work with Grittrix</div>
+      <ul class="clients" id="clientList"><!-- filled by script.js --></ul>
+    </section>
+
+    <!-- skills -->
+    <section class="section" id="skills">
+      <div class="sec-label"><b>04</b> Skills</div>
+      <div class="skills">
+        <div>
+          <h3>AI &amp; data</h3>
+          <ul><li>Python</li><li>Machine learning (coursework)</li><li>LLM agents</li><li>Data visualisation (Chart.js)</li><li>Research writing (IEEE)</li></ul>
+        </div>
+        <div>
+          <h3>Web</h3>
+          <ul><li>HTML5, CSS3, JavaScript</li><li>React, Next.js</li><li>Responsive design</li><li>DOM and event handling</li></ul>
+        </div>
+        <div>
+          <h3>Back end</h3>
+          <ul><li>Node.js, NestJS</li><li>PostgreSQL, Redis</li><li>REST APIs</li><li>Railway deployment</li></ul>
+        </div>
+        <div>
+          <h3>Tools</h3>
+          <ul><li>Git, GitHub, GitHub Pages</li><li>VS Code</li><li>Writing compilers (Lumen)</li><li>Team leadership</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- contact -->
+    <section class="section contact" id="contact">
+      <div class="sec-label"><b>05</b> Contact</div>
+      <h2 class="contact-line">Have a project or a research idea? <a href="mailto:mhad08287@gmail.com">Write to me.</a></h2>
+      <div class="contact-grid">
+        <div><span>Email</span><a href="mailto:mhad08287@gmail.com">mhad08287@gmail.com</a></div>
+        <div><span>GitHub</span><a href="https://github.com/mahadishaaqlubega" target="_blank" rel="noopener">mahadishaaqlubega</a></div>
+        <div><span>Enrollment no.</span><b>92400198030</b></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <span>&copy; <span id="year">2026</span> Lubega Mahad Ishaaq</span>
+    <span>IWD Experiment 1 &middot; Hosted on GitHub Pages</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
