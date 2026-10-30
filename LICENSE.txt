@@ -1,4 +1,0 @@
-TeX Gyre Pagella and TeX Gyre Heros
-Copyright GUST e-foundry. Released under the GUST Font License,
-which allows free use and redistribution. https://www.gust.org.pl/projects/e-foundry/tex-gyre
-The files here are subsets (Latin characters only) converted to WOFF.
