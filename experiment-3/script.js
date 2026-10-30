@@ -217,7 +217,7 @@ function renderNumbers() {
   $("dataBody").innerHTML = s.months.map((m, i) => {
     const g = s.start + i;
     const prev = data.sales[g - 1];
-    let change = '<span class="delta flat">&ndash;</span>';
+    let change = '<span class="delta flat">First month</span>';
     if (prev !== undefined) {
       const ch = ((s.sales[i] - prev) / prev) * 100;
       const cls = ch > 0 ? "up" : ch < 0 ? "down" : "flat";
