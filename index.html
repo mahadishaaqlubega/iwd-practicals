@@ -3,88 +3,179 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IWD Practicals | Lubega Mahad Ishaaq</title>
-  <meta name="description" content="Intelligent Web Designing (01AL0501) practicals: Experiment 2 and Experiment 3.">
-  <link rel="stylesheet" href="assets/css/base.css">
-  <style>
-    .hero { padding: clamp(40px, 7vw, 96px) 0 40px; border-bottom: 1px solid var(--ink); }
-    .hero .kicker { margin-bottom: 24px; }
-    .hero .deck { margin-top: 24px; }
-    .who { display: flex; gap: 48px; flex-wrap: wrap; margin-top: 36px; }
-    .who span { display: block; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
-    .who strong { font-family: var(--serif); font-weight: 400; font-size: 22px; }
-
-    .list { list-style: none; }
-    .item { border-bottom: 1px solid var(--rule); }
-    .item a {
-      display: grid; grid-template-columns: 90px minmax(0, 1fr) auto; gap: 28px; align-items: baseline;
-      padding: 34px 0; color: inherit; text-decoration: none;
-    }
-    .num { font-family: var(--serif); font-size: 44px; line-height: 1; color: var(--ink-3); transition: color .2s; }
-    .item h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -.01em; }
-    .item p { margin-top: 8px; color: var(--ink-2); max-width: 620px; }
-    .topics { margin-top: 12px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
-    .go { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; border-bottom: 1px solid var(--ink); padding-bottom: 3px; white-space: nowrap; }
-    .item a:hover .num, .item a:hover h2 { color: var(--accent); }
-    .item a:hover .go { color: var(--accent); border-color: var(--accent); }
-    @media (max-width: 640px) {
-      .item a { grid-template-columns: 1fr; gap: 10px; }
-      .go { justify-self: start; }
-    }
-  </style>
+  <title>Lab Pass Studio | IWD Experiment 2</title>
+  <meta name="description" content="Experiment 2: a responsive interface that rewrites page text as the user types.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <header class="masthead">
     <div class="masthead-row">
-      <a class="wordmark" href="./"><b>IWD Lab</b><span>01AL0501</span></a>
-      <div class="mast-meta"><span class="hide-sm">Faculty of Technology &middot; BS AI ML &amp; DS</span></div>
+      <a class="wordmark" href="../index.html"><b>IWD Lab</b><span>Experiment No. 02</span></a>
+      <div class="mast-meta">
+        <span class="hide-sm" id="clock">&nbsp;</span>
+        <button class="text-btn" id="themeBtn" type="button">Dark mode</button>
+      </div>
     </div>
   </header>
 
   <main class="page">
+
+    <!-- headline: rewritten by JavaScript as the user types -->
     <section class="hero">
-      <p class="kicker">Intelligent Web Designing</p>
-      <h1 class="display">Practical <em>work</em></h1>
-      <p class="deck">Experiments 2 and 3. Both pages are written in plain HTML, CSS and JavaScript and adjust to phones, tablets and desktops.</p>
-      <div class="who">
-        <div><span>Student</span><strong>Lubega Mahad Ishaaq</strong></div>
-        <div><span>Enrollment no.</span><strong>92400198030</strong></div>
+      <div class="hero-text">
+        <p class="kicker">Live text binding</p>
+        <h1 class="display" id="greeting">Good day, <em>guest</em>.</h1>
+        <p class="deck" id="deck">Fill in the form and the pass on the right is written for you, one keystroke at a time.</p>
+      </div>
+      <div class="meter" aria-live="polite">
+        <span class="meter-label">Pass complete</span>
+        <span class="meter-value"><span id="pctValue">0</span><small>%</small></span>
+        <div class="meter-track"><div class="meter-fill" id="pctFill"></div></div>
+        <span class="meter-note" id="pctNote">3 required fields left</span>
       </div>
     </section>
 
-    <ul class="list">
-      <li class="item">
-        <a href="experiment-2/">
-          <span class="num">02</span>
-          <div>
-            <h2>Lab Pass Studio</h2>
-            <p>A responsive form where the headline, a lab pass and text statistics are rewritten as you type, with checks on every field.</p>
-            <p class="topics">DOM &middot; Events &middot; Validation &middot; Responsive layout</p>
+    <section class="workspace">
+
+      <!-- left column: the form -->
+      <form class="form-col" id="profileForm" novalidate>
+        <div class="sec-label"><b>01</b> Your details</div>
+
+        <div class="field" data-field="name">
+          <label for="name"><span class="n">a</span>Full name <i>required</i></label>
+          <input type="text" id="name" name="name" placeholder="Lubega Mahad Ishaaq" autocomplete="name" maxlength="40">
+          <p class="hint" data-default="Letters and spaces, 3 to 40 characters">Letters and spaces, 3 to 40 characters</p>
+        </div>
+
+        <div class="field" data-field="enrollment">
+          <label for="enrollment"><span class="n">b</span>Enrollment number <i>required</i></label>
+          <input type="text" id="enrollment" name="enrollment" placeholder="00000000000" inputmode="numeric" maxlength="11">
+          <p class="hint" data-default="Exactly 11 digits">Exactly 11 digits</p>
+        </div>
+
+        <div class="pair">
+          <div class="field" data-field="department">
+            <label for="department"><span class="n">c</span>Department <i>required</i></label>
+            <select id="department" name="department">
+              <option value="">Choose</option>
+              <option>BS - AI ML &amp; DS</option>
+              <option>Computer Engineering</option>
+              <option>Information Technology</option>
+              <option>Electronics &amp; Communication</option>
+            </select>
+            <p class="hint" data-default="Pick one">Pick one</p>
           </div>
-          <span class="go">Open</span>
-        </a>
-      </li>
-      <li class="item">
-        <a href="experiment-3/">
-          <span class="num">03</span>
-          <div>
-            <h2>The Sales Ledger</h2>
-            <p>Line and bar charts made with Chart.js, with headline figures, a statistics table, period filters and a simulated live feed.</p>
-            <p class="topics">Chart.js &middot; Line chart &middot; Bar chart &middot; Statistics</p>
+
+          <div class="field" data-field="semester">
+            <label for="semester"><span class="n">d</span>Semester</label>
+            <select id="semester" name="semester">
+              <option value="">Choose</option>
+              <option>Semester 3</option>
+              <option>Semester 4</option>
+              <option>Semester 5</option>
+              <option>Semester 6</option>
+            </select>
+            <p class="hint" data-default="Optional">Optional</p>
           </div>
-          <span class="go">Open</span>
-        </a>
-      </li>
-    </ul>
+        </div>
+
+        <div class="field" data-field="headline">
+          <label for="headline"><span class="n">e</span>Headline</label>
+          <input type="text" id="headline" name="headline" placeholder="Web developer, AI/ML student" maxlength="50">
+          <p class="hint" data-default="Optional, up to 50 characters">Optional, up to 50 characters</p>
+        </div>
+
+        <div class="field" data-field="about">
+          <label for="about"><span class="n">f</span>About <span class="counter" id="aboutCounter">0/160</span></label>
+          <textarea id="about" name="about" rows="3" maxlength="160" placeholder="Two lines about what you are working on."></textarea>
+          <p class="hint" data-default="Optional, up to 160 characters">Optional, up to 160 characters</p>
+        </div>
+
+        <div class="options">
+          <div>
+            <span class="opt-label">Accent</span>
+            <div class="swatches" id="swatches" role="radiogroup" aria-label="Accent colour">
+              <button type="button" class="swatch active" data-color="#c8442c" data-name="Vermillion" style="--c:#c8442c" aria-label="Vermillion"></button>
+              <button type="button" class="swatch" data-color="#1f4e79" data-name="Navy" style="--c:#1f4e79" aria-label="Navy"></button>
+              <button type="button" class="swatch" data-color="#2f6b47" data-name="Forest" style="--c:#2f6b47" aria-label="Forest"></button>
+              <button type="button" class="swatch" data-color="#a87b16" data-name="Ochre" style="--c:#a87b16" aria-label="Ochre"></button>
+              <button type="button" class="swatch" data-color="#171614" data-name="Ink" style="--c:#171614" aria-label="Ink"></button>
+            </div>
+          </div>
+          <div>
+            <span class="opt-label">Name style</span>
+            <div class="tabs" id="caseControl">
+              <button type="button" data-case="normal" class="active">As typed</button>
+              <button type="button" data-case="title">Title Case</button>
+              <button type="button" data-case="upper">Capitals</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn">Issue pass</button>
+          <button type="button" class="btn ghost" id="resetBtn">Clear</button>
+        </div>
+      </form>
+
+      <!-- right column: everything here is written by script.js -->
+      <aside class="preview-col">
+        <div class="sec-label"><b>02</b> Preview</div>
+
+        <article class="pass" id="pass">
+          <header class="pass-top">
+            <span>IWD Lab Pass</span>
+            <span id="pvYear">2026</span>
+          </header>
+
+          <div class="pass-main">
+            <div class="monogram" id="pvInitials">?</div>
+            <div class="pass-id">
+              <h2 id="pvName">Your name</h2>
+              <p id="pvHeadline">Your headline</p>
+            </div>
+          </div>
+
+          <dl class="pass-meta">
+            <div><dt>Enrollment</dt><dd id="pvEnroll">&mdash;</dd></div>
+            <div><dt>Department</dt><dd id="pvDept">&mdash;</dd></div>
+            <div><dt>Semester</dt><dd id="pvSem">&mdash;</dd></div>
+          </dl>
+
+          <p class="pass-about" id="pvAbout">Whatever you write in the About box appears here.</p>
+
+          <footer class="pass-foot">
+            <svg class="barcode" id="barcode" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span class="code-num" id="pvCode">00000000000</span>
+          </footer>
+
+          <span class="stamp" id="stamp">Issued</span>
+        </article>
+
+        <div class="figures">
+          <div><span id="stChars">0</span><small>Characters</small></div>
+          <div><span id="stWords">0</span><small>Words</small></div>
+          <div><span id="stRead">0s</span><small>Read time</small></div>
+        </div>
+
+        <div class="log">
+          <div class="sec-label"><b>03</b> Change log</div>
+          <ol id="log"><li class="empty">Nothing typed yet.</li></ol>
+        </div>
+      </aside>
+
+    </section>
   </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <footer class="colophon">
     <span>Lubega Mahad Ishaaq &middot; 92400198030</span>
-    <span>Marwadi University</span>
+    <span>01AL0501 Intelligent Web Designing</span>
   </footer>
 
-  <script>
-    try { document.documentElement.dataset.theme = localStorage.getItem("iwd-theme") || "light"; } catch (e) {}
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
