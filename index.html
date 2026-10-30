@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IWD Practicals | Lubega Mahad Ishaaq</title>
+  <meta name="description" content="Intelligent Web Designing (01AL0501) practicals: Experiment 2 and Experiment 3.">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <style>
+    .hero { padding: clamp(40px, 7vw, 96px) 0 40px; border-bottom: 1px solid var(--ink); }
+    .hero .kicker { margin-bottom: 24px; }
+    .hero .deck { margin-top: 24px; }
+    .who { display: flex; gap: 48px; flex-wrap: wrap; margin-top: 36px; }
+    .who span { display: block; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
+    .who strong { font-family: var(--serif); font-weight: 400; font-size: 22px; }
+
+    .list { list-style: none; }
+    .item { border-bottom: 1px solid var(--rule); }
+    .item a {
+      display: grid; grid-template-columns: 90px minmax(0, 1fr) auto; gap: 28px; align-items: baseline;
+      padding: 34px 0; color: inherit; text-decoration: none;
+    }
+    .num { font-family: var(--serif); font-size: 44px; line-height: 1; color: var(--ink-3); transition: color .2s; }
+    .item h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; letter-spacing: -.01em; }
+    .item p { margin-top: 8px; color: var(--ink-2); max-width: 620px; }
+    .topics { margin-top: 12px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+    .go { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; border-bottom: 1px solid var(--ink); padding-bottom: 3px; white-space: nowrap; }
+    .item a:hover .num, .item a:hover h2 { color: var(--accent); }
+    .item a:hover .go { color: var(--accent); border-color: var(--accent); }
+    @media (max-width: 640px) {
+      .item a { grid-template-columns: 1fr; gap: 10px; }
+      .go { justify-self: start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-row">
+      <a class="wordmark" href="./"><b>IWD Lab</b><span>01AL0501</span></a>
+      <div class="mast-meta"><span class="hide-sm">Faculty of Technology &middot; BS AI ML &amp; DS</span></div>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <p class="kicker">Intelligent Web Designing</p>
+      <h1 class="display">Practical <em>work</em></h1>
+      <p class="deck">Experiments 2 and 3. Both pages are written in plain HTML, CSS and JavaScript and adjust to phones, tablets and desktops.</p>
+      <div class="who">
+        <div><span>Student</span><strong>Lubega Mahad Ishaaq</strong></div>
+        <div><span>Enrollment no.</span><strong>92400198030</strong></div>
+      </div>
+    </section>
+
+    <ul class="list">
+      <li class="item">
+        <a href="experiment-2/">
+          <span class="num">02</span>
+          <div>
+            <h2>Lab Pass Studio</h2>
+            <p>A responsive form where the headline, a lab pass and text statistics are rewritten as you type, with checks on every field.</p>
+            <p class="topics">DOM &middot; Events &middot; Validation &middot; Responsive layout</p>
+          </div>
+          <span class="go">Open</span>
+        </a>
+      </li>
+      <li class="item">
+        <a href="experiment-3/">
+          <span class="num">03</span>
+          <div>
+            <h2>The Sales Ledger</h2>
+            <p>Line and bar charts made with Chart.js, with headline figures, a statistics table, period filters and a simulated live feed.</p>
+            <p class="topics">Chart.js &middot; Line chart &middot; Bar chart &middot; Statistics</p>
+          </div>
+          <span class="go">Open</span>
+        </a>
+      </li>
+    </ul>
+  </main>
+
+  <footer class="colophon">
+    <span>Lubega Mahad Ishaaq &middot; 92400198030</span>
+    <span>Marwadi University</span>
+  </footer>
+
+  <script>
+    try { document.documentElement.dataset.theme = localStorage.getItem("iwd-theme") || "light"; } catch (e) {}
+  </script>
+</body>
+</html>
